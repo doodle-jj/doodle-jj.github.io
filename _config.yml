@@ -6,15 +6,15 @@ minimal_mistakes_skin: "default"
 locale: "ko-KR"
 title: "더블제이 블로그"
 name: "Double J"
-description: "Capturing the moments in everyday life I wish I could pause."
+description: "수영 훈련, 수상구조사 자격증 대비, 모의고사 등 실전 중심 정보를 제공하는 블로그"
 url: "https://doodle-jj.github.io"
 baseurl: ""
 timezone: "Asia/Seoul"
 
 # Author
 author:
-  name: "Double J"
-  bio: "Capturing the moments in everyday life I wish I could pause."
+  name: "Double Jay"
+  bio: "Archiving the "pause-worthy" moments hidden in plain sight."
 
 # Pagination
 paginate: 5
