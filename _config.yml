@@ -14,7 +14,7 @@ timezone: "Asia/Seoul"
 # Author
 author:
   name: "Double Jay"
-  bio: "Archiving the "pause-worthy" moments hidden in plain sight."
+  bio: "Archiving **the pause-worthy moments** hidden in plain sight."
 
 # Pagination
 paginate: 5
