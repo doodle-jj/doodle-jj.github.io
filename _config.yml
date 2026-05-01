@@ -46,6 +46,10 @@ analytics:
     tracking_id: "G-G1DESB7W24"
     anonymize_ip: false
 
+# Include
+include:
+  - lifeguard-quiz
+  
 # Exclude
 exclude:
   - test
