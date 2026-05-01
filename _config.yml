@@ -21,7 +21,7 @@ title                    : "더블제이 블로그"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Double J"
-description              : "Capturing the moments in everyday life I wish I could pause."
+description              : "Archiving **the "pause-worthy" moments** hidden in plain sight."
 url                      : "https://doodle-jj.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
