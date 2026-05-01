@@ -50,10 +50,16 @@ analytics:
 exclude:
   - test
   - docs
+  - CHANGELOG.md
+  - README.md
+  - LICENSE
+  - Gemfile
+  - package.json
+  - package-lock.json
   - node_modules
   - vendor
-  - Gemfile
-  - README.md
+  - log
+  - tmp
 
 # Plugins
 plugins:
