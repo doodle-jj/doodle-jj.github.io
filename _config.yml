@@ -14,7 +14,7 @@ timezone: "Asia/Seoul"
 # Author
 author:
   name: "Double Jay"
-  bio: "Archiving **the pause-worthy moments** hidden in plain sight."
+  bio: "일상에서 쉽게 지나칠 수 있는 것들 중 멈추고 싶은 순간을 기록하고 있습니다. "
 
 # Pagination
 paginate: 5
