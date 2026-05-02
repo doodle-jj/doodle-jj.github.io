@@ -190,6 +190,9 @@ function generatequiz() {
 
   const tbody = document.getElementById("problem-body");
 
+  // 🔥 기존 문제 제거 (핵심)
+  tbody.innerHTML = "";
+
       // 규칙: 마디짓기 3, 이어매기 1, 움켜매기 1
       const m = pickRandom(madiList, 3);
       const e = pickRandom(ieoList, 1);
