@@ -110,7 +110,7 @@
       <li>움켜매기: 1문제</li>
       <li>출제 순서: <b>마디짓기 → 이어매기 → 움켜매기</b></li>
     </ul>
-    <button onclick="generateProblems()">문제 출제하기</button>
+    <button onclick="generatequiz()">문제 출제하기</button>
     <div class="meta">※ 새로고침하거나 다시 눌러도 매번 새로 출제됩니다.</div>
   </div>
 
@@ -181,9 +181,9 @@
       return shuffle(list).slice(0, count);
     }
 
-function generateProblems() {
+function generatequiz() {
 
-  gtag('event', 'generate_knot_problem', {
+  gtag('event', 'generate_knot_quiz', {
     event_category: 'knot_quiz',
     event_label: 'generate_button'
   });
