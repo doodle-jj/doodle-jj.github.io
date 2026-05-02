@@ -87,16 +87,17 @@
       padding: 12px 0;
     }
   </style>
-    <!-- Google tag (gtag.js) -->
+
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1DESB7W24"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-G1DESB7W24');
   </script>
 </head>
+
 <body>
   <h1>매듭 랜덤 문제 생성기</h1>
 
@@ -124,15 +125,14 @@
         </tr>
       </thead>
       <tbody id="problem-body">
-        <tr><td colspan="3" class="empty">아직 출제된 문제가 없습니다.</td></tr>
+        <tr>
+          <td colspan="3" class="empty">아직 출제된 문제가 없습니다.</td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <script>
-    // 🔽 너가 준 실제 매듭 리스트 반영
-
-    // 마디짓기 (9개)
     const madiList = [
       "옭매듭",
       "두겹 옭매듭",
@@ -145,7 +145,6 @@
       "나비 매듭"
     ];
 
-    // 이어매기 (5개)
     const ieoList = [
       "바른 매듭",
       "한겹 매듭",
@@ -154,15 +153,12 @@
       "피셔맨 매듭"
     ];
 
-    // 움켜매기 (4개)
     const umList = [
       "절반 매기",
       "잡아 매기",
       "감아 매기",
       "말뚝 매기"
     ];
-    // 🔼 여기까지 문제은행 🔼
-
 
     function shuffle(array) {
       const arr = array.slice();
@@ -181,28 +177,27 @@
       return shuffle(list).slice(0, count);
     }
 
-function generateProblems() {
+    function generateProblems() {
+      gtag('event', 'generate_knot_problem', {
+        event_category: 'knot_quiz',
+        event_label: 'generate_button'
+      });
 
-  gtag('event', 'generate_knot_problem', {
-    event_category: 'knot_quiz',
-    event_label: 'generate_button'
-  });
+      const tbody = document.getElementById("problem-body");
 
-  const tbody = document.getElementById("problem-body");
+      // 기존 출제 결과 삭제
+      tbody.innerHTML = "";
 
-      // 규칙: 마디짓기 3, 이어매기 1, 움켜매기 1
       const m = pickRandom(madiList, 3);
       const e = pickRandom(ieoList, 1);
       const u = pickRandom(umList, 1);
 
       if (m.length !== 3 || e.length !== 1 || u.length !== 1) {
-        const tr = document.createElement("tr");
-        const td = document.createElement("td");
-        td.colSpan = 3;
-        td.className = "empty";
-        td.textContent = "문제은행에 항목이 충분하지 않습니다.";
-        tr.appendChild(td);
-        tbody.appendChild(tr);
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="3" class="empty">문제은행에 항목이 충분하지 않습니다.</td>
+          </tr>
+        `;
         return;
       }
 
@@ -233,9 +228,6 @@ function generateProblems() {
         tbody.appendChild(tr);
       });
     }
-
-    // 페이지 열리자마자 자동 출제하고 싶으면 아래 주석을 풀면 됨
-    // window.onload = generateProblems;
   </script>
 </body>
 </html>
