@@ -6589,6 +6589,12 @@ function sample(array, count) { return shuffle(array).slice(0, count); }
 function escapeHTML(value) { return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
 function cleanChoiceText(value) { return String(value ?? "").replace(/^\s*[①②③④⑤⑥⑦⑧⑨⑩]\s*/, "").replace(/^\s*[1-9][.)]\s*/, ""); }
 function generateExam() {
+
+  gtag('event', 'generate_exam', {
+    event_category: 'quiz500',
+    event_label: 'generate_button'
+  });
+
   const selected = []; const shortage = [];
   Object.entries(EXAM_RULE).forEach(([part, count]) => { const pool = QUESTION_BANK.filter(q => q.part === part); if (pool.length < count) shortage.push(`${part}: 필요 ${count}문항 / 보유 ${pool.length}문항`); selected.push(...sample(pool, count)); });
   if (shortage.length > 0) { alert("출제 가능한 문항 수가 부족합니다.\n" + shortage.join("\n")); return; }
@@ -6606,6 +6612,11 @@ function renderExam() {
 }
 function getSelected(index) { const selected = document.querySelector(`input[name="q${index}"]:checked`); return selected ? Number(selected.value) : null; }
 function gradeExam() {
+
+  gtag('event', 'grade_exam', {
+    event_category: 'quiz500',
+    event_label: 'grade_button'
+  });
   if (currentExam.length === 0) { alert("먼저 문제를 출제해주세요."); return; }
   let correct = 0; let unanswered = 0; const wrongList = [];
   currentExam.forEach((q, index) => { const selected = getSelected(index); if (!selected) unanswered++; if (selected === q.answer) correct++; else wrongList.push({ displayNo: index + 1, originalNumber: q.originalNumber, selected, answer: q.answer }); });
@@ -6613,7 +6624,14 @@ function gradeExam() {
   const wrongHtml = wrongList.length ? `<details open><summary>오답/미응답 목록 보기</summary><ul>${wrongList.map(w => `<li>문제 ${w.displayNo} / 원문항 ${w.originalNumber}번 · 내 답: ${w.selected ?? "미응답"} · 정답: ${w.answer}</li>`).join("")}</ul></details>` : "<p>모든 문항을 맞혔습니다.</p>";
   const summary = document.getElementById("summary"); summary.classList.add("show"); summary.innerHTML = `<p class="score">${score}점</p><p>정답 수: <b>${correct}</b> / ${currentExam.length} · 오답/미응답: <b>${currentExam.length - correct}</b> · 미응답: <b>${unanswered}</b></p>${wrongHtml}`; window.scrollTo({ top: 0, behavior: "smooth" });
 }
-function resetAnswers() { if (currentExam.length === 0) return; graded = false; document.getElementById("summary").classList.remove("show"); document.getElementById("summary").innerHTML = ""; renderExam(); }
+function resetAnswers() {
+
+  gtag('event', 'reset_exam', {
+    event_category: 'quiz500',
+    event_label: 'reset_button'
+  });
+  
+  if (currentExam.length === 0) return; graded = false; document.getElementById("summary").classList.remove("show"); document.getElementById("summary").innerHTML = ""; renderExam(); }
 </script>
 </body>
 </html>
